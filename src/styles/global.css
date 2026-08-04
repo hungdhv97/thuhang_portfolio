@@ -1,0 +1,333 @@
+@import "tailwindcss";
+
+/* Design Read: solo BA portfolio for recruiter/hiring managers,
+ * premium editorial Letter, stone paper + forest accent.
+ * Dials: DESIGN_VARIANCE 7 · MOTION_INTENSITY 4 · VISUAL_DENSITY 4
+ */
+
+:root {
+  --color-paper: oklch(96.8% 0.008 92);
+  --color-paper-2: oklch(93.8% 0.01 92);
+  --color-ink: oklch(20% 0.02 55);
+  --color-ink-soft: oklch(40% 0.016 55);
+  --color-accent: oklch(46% 0.085 152);
+  --color-accent-soft: oklch(46% 0.085 152 / 0.14);
+  --color-rule: oklch(20% 0.02 55 / 0.12);
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html.dark {
+  --color-paper: oklch(17% 0.014 55);
+  --color-paper-2: oklch(21% 0.016 55);
+  --color-ink: oklch(94% 0.008 92);
+  --color-ink-soft: oklch(72% 0.012 92);
+  --color-accent: oklch(74% 0.095 152);
+  --color-accent-soft: oklch(74% 0.095 152 / 0.18);
+  --color-rule: oklch(94% 0.008 92 / 0.12);
+}
+
+@theme inline {
+  --color-paper: var(--color-paper);
+  --color-paper-2: var(--color-paper-2);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-accent: var(--color-accent);
+  --color-rule: var(--color-rule);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  background-image:
+    radial-gradient(ellipse 90% 55% at 0% -5%, var(--color-accent-soft), transparent 52%),
+    radial-gradient(ellipse 55% 40% at 100% 8%, oklch(94% 0.01 92 / 0.7), transparent 48%);
+  background-attachment: fixed;
+}
+
+html.dark body {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 5% -8%, var(--color-accent-soft), transparent 55%),
+    radial-gradient(ellipse 45% 35% at 100% 0%, oklch(22% 0.016 55 / 0.85), transparent 50%);
+}
+
+/* Paper grain */
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+html.dark body::before {
+  opacity: 0.07;
+  mix-blend-mode: soft-light;
+}
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-ink);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-optical-sizing: auto;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.letter {
+  width: min(100% - 2rem, 42rem);
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .letter {
+    width: min(100% - 3.5rem, 46rem);
+  }
+}
+
+@media (min-width: 1100px) {
+  .letter {
+    width: min(100% - 5rem, 52rem);
+    margin-left: max(5rem, calc((100vw - 52rem) * 0.22));
+    margin-right: auto;
+  }
+}
+
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.is-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.work-list:hover .work-item:not(:hover) {
+  opacity: 0.42;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-list:hover .work-item:not(:hover) {
+    opacity: 1;
+  }
+}
+
+.work-item {
+  transition: opacity 0.4s ease;
+}
+
+.cta-text {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  color: var(--color-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-rule);
+  padding-bottom: 0.2rem;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.cta-text:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.cta-solid {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85rem 1.4rem;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: background-color 0.25s ease;
+}
+
+.cta-solid:hover {
+  background: var(--color-accent);
+}
+
+.nav-a {
+  color: var(--color-ink-soft);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.nav-a:hover {
+  color: var(--color-accent);
+}
+
+/* Abstract work marks — typography companions, not image boxes */
+.mark {
+  position: relative;
+  width: 100%;
+  height: 4.5rem;
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--color-rule);
+  overflow: hidden;
+}
+
+.mark::before,
+.mark::after {
+  content: "";
+  position: absolute;
+  background: var(--color-accent);
+  opacity: 0.55;
+}
+
+.mark-orbit::before {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-accent);
+  background: transparent;
+  top: 0.65rem;
+  left: 0;
+}
+
+.mark-orbit::after {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  top: 1.1rem;
+  left: 2.9rem;
+}
+
+.mark-stack::before {
+  width: 4.5rem;
+  height: 1px;
+  top: 1.4rem;
+  left: 0;
+}
+
+.mark-stack::after {
+  width: 3rem;
+  height: 1px;
+  top: 2.2rem;
+  left: 0;
+  opacity: 0.35;
+  box-shadow: 0 0.8rem 0 var(--color-accent);
+}
+
+.mark-grid::before {
+  width: 2.75rem;
+  height: 2.75rem;
+  background:
+    linear-gradient(var(--color-accent), var(--color-accent)) 0 0 / 100% 1px no-repeat,
+    linear-gradient(var(--color-accent), var(--color-accent)) 0 100% / 100% 1px no-repeat,
+    linear-gradient(var(--color-accent), var(--color-accent)) 0 0 / 1px 100% no-repeat,
+    linear-gradient(var(--color-accent), var(--color-accent)) 100% 0 / 1px 100% no-repeat;
+  opacity: 0.7;
+  top: 0.85rem;
+  left: 0;
+}
+
+.mark-grid::after {
+  width: 1px;
+  height: 2.75rem;
+  top: 0.85rem;
+  left: 1.35rem;
+  opacity: 0.35;
+  box-shadow: 1.35rem 0 0 var(--color-accent);
+}
+
+.mark-pulse::before {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  top: 1.7rem;
+  left: 0;
+}
+
+.mark-pulse::after {
+  width: 5rem;
+  height: 1px;
+  top: 1.95rem;
+  left: 0.9rem;
+  opacity: 0.4;
+  background: linear-gradient(90deg, var(--color-accent), transparent);
+}
+
+.mark-flow::before {
+  width: 0;
+  height: 0;
+  border-left: 5rem solid transparent;
+  border-bottom: 1px solid var(--color-accent);
+  background: transparent;
+  opacity: 0.7;
+  top: 2rem;
+  left: 0;
+  transform: skewX(-28deg);
+}
+
+.mark-flow::after {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 1px;
+  top: 1.55rem;
+  left: 4.4rem;
+}
+
+.pull {
+  border-left: 2px solid var(--color-accent);
+  padding-left: 1.25rem;
+}
+
+.skill-col {
+  border-top: 1px solid var(--color-rule);
+  padding-top: 1.25rem;
+}
+
+.skill-col li {
+  margin: 0;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--color-rule);
+  list-style: none;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.skill-col ul {
+  margin: 0.75rem 0 0;
+  padding: 0;
+}

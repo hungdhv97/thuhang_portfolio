@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Thái Thị Thu Hằng — Portfolio
+
+Business Analyst (HRM / ERP) portfolio. **Astro + Tailwind**, editorial Letter design.
+
+## Design Read
+
+Solo BA portfolio for recruiter/hiring managers — premium editorial, stone paper + forest accent, Fraunces + Source Sans 3.
+
+Dials: `DESIGN_VARIANCE 7` · `MOTION_INTENSITY 4` · `VISUAL_DENSITY 4`
+
+See [`design.md`](design.md).
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:4321](http://localhost:4321).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy and metrics from [`docs/THAI THI THU HANG - BUSINESS ANALYST.pdf`](docs/THAI%20THI%20THU%20HANG%20-%20BUSINESS%20ANALYST.pdf) via [`src/data/content.ts`](src/data/content.ts).
 
-## Learn More
+## Scripts
 
-To learn more about Next.js, take a look at the following resources:
+- `npm run dev` — Astro dev server
+- `npm run build` — static production build → `dist/`
+- `npm run preview` — preview production build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Static output in `dist/` — deploy to Cloudflare Pages, Vercel, or Netlify (framework preset: Astro).
