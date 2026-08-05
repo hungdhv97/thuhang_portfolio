@@ -2,14 +2,16 @@
 import { profile } from "../data/content";
 ---
 
-<footer class="letter border-t border-[var(--color-rule)] py-10 md:py-12">
-  <div
-    class="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3"
-  >
-    <p class="font-display text-lg tracking-tight md:text-xl">{profile.name}</p>
-    <p class="label text-[var(--color-ink-soft)]">{profile.role}</p>
+<footer class="site-footer w-full border-t border-[var(--color-rule)]">
+  <div class="letter py-10 md:py-12">
+    <div
+      class="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3"
+    >
+      <p class="font-display text-lg tracking-tight md:text-xl">{profile.name}</p>
+      <p class="label text-[var(--color-ink-soft)]">{profile.role}</p>
+    </div>
+    <p class="mt-5 text-sm text-[var(--color-ink-soft)] md:mt-6">
+      Astro · Editorial Letter · Nội dung từ CV
+    </p>
   </div>
-  <p class="mt-5 text-sm text-[var(--color-ink-soft)] md:mt-6">
-    Astro · Editorial Letter · Nội dung từ CV
-  </p>
 </footer>
