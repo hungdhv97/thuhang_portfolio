@@ -19,7 +19,7 @@ Solo BA portfolio for recruiter/hiring managers (HR-tech, ERP, banking, FnB), wi
 ## Genre / theme
 
 - Genre: `editorial`
-- Macrostructure: `letter` (left-biased)
+- Macrostructure: `letter` (centered column)
 - Theme: cool stone paper + forest accent
 - Light default; `html.dark` tonal invert
 - Paper grain overlay + soft radial atmosphere
