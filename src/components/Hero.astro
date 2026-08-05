@@ -1,0 +1,26 @@
+---
+import { profile } from "../data/content";
+---
+
+<section class="reveal mb-24 md:mb-40" aria-labelledby="hero-name">
+  <p class="label mb-6 text-[var(--color-accent)] md:mb-8">{profile.role}</p>
+  <h1
+    id="hero-name"
+    class="font-display max-w-[12ch] text-[clamp(2.5rem,11vw,5.5rem)] leading-[1.05] tracking-[-0.03em] text-balance text-[var(--color-ink)] md:leading-[0.98]"
+  >
+    {profile.name}
+  </h1>
+  <p
+    class="mt-8 max-w-[min(28ch,100%)] text-[1.2rem] leading-snug tracking-[-0.01em] text-[var(--color-ink)] md:mt-10 md:text-[1.65rem]"
+  >
+    {profile.headline}
+  </p>
+  <p
+    class="mt-4 max-w-[min(40ch,100%)] text-base leading-relaxed text-[var(--color-ink-soft)] md:mt-5 md:text-lg"
+  >
+    {profile.support}
+  </p>
+  <div class="mt-8 md:mt-10">
+    <a href="#work" class="cta-solid cta-solid-responsive">Xem dự án</a>
+  </div>
+</section>

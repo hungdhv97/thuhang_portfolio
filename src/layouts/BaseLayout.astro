@@ -7,8 +7,9 @@ interface Props {
 }
 
 const {
-  title = "Thái Thị Thu Hằng — Business Analyst",
-  description = "Business Analyst chuyên HRM & ERP. Hơn 7 năm dẫn dắt chuyển đổi số cho tổ chức lớn — am hiểu quy trình thực tế và phần mềm.",
+  title = "Thái Thị Thu Hằng - Business Analyst",
+  description =
+    "Business Analyst chuyên HRM & ERP. Hơn 7 năm dẫn dắt chuyển đổi số cho tổ chức lớn - am hiểu quy trình thực tế và phần mềm.",
 } = Astro.props;
 ---
 
@@ -64,26 +65,33 @@ const {
       }
 
       function initTheme() {
-        const btn = document.getElementById("theme-toggle");
-        if (!btn) return;
+        const buttons = Array.from(
+          document.querySelectorAll(".theme-toggle"),
+        );
+        if (buttons.length === 0) return;
 
         const sync = () => {
           const dark = document.documentElement.classList.contains("dark");
-          btn.textContent = dark ? "Day" : "Night";
-          btn.setAttribute(
-            "aria-label",
-            dark ? "Chuyển sang giao diện sáng" : "Chuyển sang giao diện tối",
-          );
+          const label = dark ? "Day" : "Night";
+          const aria = dark
+            ? "Chuyển sang giao diện sáng"
+            : "Chuyển sang giao diện tối";
+          buttons.forEach((btn) => {
+            btn.textContent = label;
+            btn.setAttribute("aria-label", aria);
+          });
         };
 
         sync();
-        btn.addEventListener("click", () => {
-          const next = !document.documentElement.classList.contains("dark");
-          document.documentElement.classList.toggle("dark", next);
-          try {
-            localStorage.setItem("theme", next ? "dark" : "light");
-          } catch (_) {}
-          sync();
+        buttons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const next = !document.documentElement.classList.contains("dark");
+            document.documentElement.classList.toggle("dark", next);
+            try {
+              localStorage.setItem("theme", next ? "dark" : "light");
+            } catch (_) {}
+            sync();
+          });
         });
       }
 

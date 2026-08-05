@@ -1,0 +1,60 @@
+---
+import { contact } from "../data/content";
+---
+
+<section
+  id="contact"
+  class="reveal section-atmosphere"
+  aria-labelledby="contact-heading"
+>
+  <div class="border-t border-[var(--color-rule)] pt-10 md:pt-14">
+    <h2
+      id="contact-heading"
+      class="font-display text-[clamp(1.85rem,6vw,3.25rem)] tracking-[-0.025em]"
+    >
+      Cùng làm rõ
+      <br />
+      bài toán tiếp theo.
+    </h2>
+    <p class="mt-4 max-w-[min(34ch,100%)] text-[var(--color-ink-soft)] md:mt-5">
+      Sẵn sàng trao đổi về vai trò BA trong HRM, ERP và chuyển đổi số.
+    </p>
+    <dl class="mt-10 m-0 grid gap-6 sm:grid-cols-2 sm:gap-8 md:mt-12">
+      <div class="min-w-0">
+        <dt class="label text-[var(--color-ink-soft)]">Email</dt>
+        <dd class="m-0 mt-2">
+          <a
+            href={`mailto:${contact.email}`}
+            class="cta-text cta-text-break text-base md:text-lg"
+          >
+            {contact.email}
+          </a>
+        </dd>
+      </div>
+      <div class="min-w-0">
+        <dt class="label text-[var(--color-ink-soft)]">Phone</dt>
+        <dd class="m-0 mt-2">
+          <a
+            href={`tel:${contact.phone.replace(/\s/g, "")}`}
+            class="cta-text text-base md:text-lg"
+          >
+            {contact.phone}
+          </a>
+        </dd>
+      </div>
+      <div class="min-w-0 sm:col-span-2">
+        <dt class="label text-[var(--color-ink-soft)]">Portfolio chi tiết</dt>
+        <dd class="m-0 mt-2">
+          <a
+            href={contact.portfolioUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cta-text cta-text-break text-base md:text-lg"
+          >
+            {contact.portfolioLabel}
+          </a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</section>

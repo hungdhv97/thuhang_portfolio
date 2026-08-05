@@ -1,0 +1,39 @@
+---
+import { skills } from "../data/content";
+---
+
+<section
+  id="skills"
+  class="reveal mb-24 section-atmosphere md:mb-40"
+  aria-labelledby="skills-heading"
+>
+  <h2
+    id="skills-heading"
+    class="font-display mb-8 text-[clamp(1.85rem,5vw,2.75rem)] tracking-[-0.02em] md:mb-10"
+  >
+    Kỹ năng
+  </h2>
+  <div class="mt-8 grid gap-8 md:mt-12 md:grid-cols-2 md:gap-10">
+    <div class="skill-col">
+      <p class="label mb-3 text-[var(--color-accent)] md:mb-4">Business Analysis</p>
+      <ul>
+        {skills.ba.map((s) => <li>{s}</li>)}
+      </ul>
+    </div>
+    <div class="grid gap-8">
+      <div class="skill-col">
+        <p class="label mb-3 text-[var(--color-accent)] md:mb-4">Domain</p>
+        <ul>
+          {skills.domain.map((s) => <li>{s}</li>)}
+        </ul>
+      </div>
+      <div class="skill-col">
+        <p class="label mb-3 text-[var(--color-accent)] md:mb-4">Soft Skills & Language</p>
+        <ul>
+          {skills.soft.map((s) => <li>{s}</li>)}
+          <li>{skills.language}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,53 @@
+---
+import { experience, education } from "../data/content";
+---
+
+<section
+  id="experience"
+  class="reveal mb-24 section-atmosphere md:mb-40"
+  aria-labelledby="experience-heading"
+>
+  <h2
+    id="experience-heading"
+    class="font-display mb-8 text-[clamp(1.85rem,5vw,2.75rem)] tracking-[-0.02em] md:mb-10"
+  >
+    Kinh nghiệm
+  </h2>
+  <div class="grid gap-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-16">
+    <div>
+      <p class="text-base leading-relaxed text-[var(--color-ink-soft)] md:text-sm">
+        {education.degree}
+        <br />
+        {education.school}
+        <br />
+        {education.period} · {education.gpa}
+      </p>
+    </div>
+    <ol class="timeline m-0 list-none border-l border-[var(--color-rule)] p-0 pl-5 md:pl-6">
+      {
+        experience.map((job) => (
+          <li class="relative pb-7 last:pb-0 md:pb-8">
+            <span
+              class="timeline-dot absolute top-1.5 -left-[1.45rem] h-2 w-2 rounded-full bg-[var(--color-accent)] md:-left-[1.7rem]"
+              aria-hidden="true"
+            />
+            <p class="label text-[var(--color-ink-soft)]">{job.period}</p>
+            <p
+              class:list={[
+                "mt-2",
+                job.compact
+                  ? "text-[var(--color-ink-soft)]"
+                  : "font-medium text-[var(--color-ink)]",
+              ]}
+            >
+              {job.company}
+            </p>
+            <p class="mt-1 text-sm text-[var(--color-ink-soft)]">
+              {job.role}
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

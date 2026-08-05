@@ -1,0 +1,21 @@
+---
+import { about } from "../data/content";
+---
+
+<section
+  id="about"
+  class="reveal mb-24 section-atmosphere md:mb-40"
+  aria-labelledby="about-heading"
+>
+  <h2
+    id="about-heading"
+    class="font-display mb-8 text-[clamp(1.85rem,5vw,2.75rem)] tracking-[-0.02em] md:mb-10"
+  >
+    Về tôi
+  </h2>
+  <p
+    class="pull max-w-[min(46ch,100%)] text-base leading-[1.65] text-[var(--color-ink)] md:text-xl"
+  >
+    {about.summary}
+  </p>
+</section>
