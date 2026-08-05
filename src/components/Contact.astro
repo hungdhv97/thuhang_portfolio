@@ -7,16 +7,19 @@ import { contact } from "../data/content";
   class="reveal section-atmosphere"
   aria-labelledby="contact-heading"
 >
-  <div class="border-t border-[var(--color-rule)] pt-10 md:pt-14">
+  <div class="pt-10 md:pt-14">
     <h2
       id="contact-heading"
-      class="font-display text-[clamp(1.85rem,6vw,3.25rem)] tracking-[-0.025em]"
+      class="font-display text-[clamp(2.05rem,5.25vw,3rem)] tracking-[-0.02em]"
     >
-      Cùng làm rõ
-      <br />
-      bài toán tiếp theo.
+      Liên hệ
     </h2>
-    <p class="mt-4 max-w-[min(34ch,100%)] text-[var(--color-ink-soft)] md:mt-5">
+    <p
+      class="mt-4 max-w-[min(22ch,100%)] font-display text-[clamp(1.55rem,4.5vw,2.35rem)] leading-[1.15] tracking-[-0.02em] md:mt-5"
+    >
+      Cùng làm rõ bài toán tiếp theo.
+    </p>
+    <p class="mt-4 max-w-[min(34ch,100%)] text-lg text-[var(--color-ink-soft)] md:mt-5">
       Sẵn sàng trao đổi về vai trò BA trong HRM, ERP và chuyển đổi số.
     </p>
     <dl class="mt-10 m-0 grid gap-6 sm:grid-cols-2 sm:gap-8 md:mt-12">
@@ -25,33 +28,20 @@ import { contact } from "../data/content";
         <dd class="m-0 mt-2">
           <a
             href={`mailto:${contact.email}`}
-            class="cta-text cta-text-break text-base md:text-lg"
+            class="cta-text cta-text-break text-lg md:text-xl"
           >
             {contact.email}
           </a>
         </dd>
       </div>
       <div class="min-w-0">
-        <dt class="label text-[var(--color-ink-soft)]">Phone</dt>
+        <dt class="label text-[var(--color-ink-soft)]">Điện thoại</dt>
         <dd class="m-0 mt-2">
           <a
             href={`tel:${contact.phone.replace(/\s/g, "")}`}
-            class="cta-text text-base md:text-lg"
+            class="cta-text text-lg md:text-xl"
           >
             {contact.phone}
-          </a>
-        </dd>
-      </div>
-      <div class="min-w-0 sm:col-span-2">
-        <dt class="label text-[var(--color-ink-soft)]">Portfolio chi tiết</dt>
-        <dd class="m-0 mt-2">
-          <a
-            href={contact.portfolioUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="cta-text cta-text-break text-base md:text-lg"
-          >
-            {contact.portfolioLabel}
           </a>
         </dd>
       </div>

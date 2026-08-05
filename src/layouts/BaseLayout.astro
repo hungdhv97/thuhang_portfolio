@@ -72,12 +72,10 @@ const {
 
         const sync = () => {
           const dark = document.documentElement.classList.contains("dark");
-          const label = dark ? "Day" : "Night";
           const aria = dark
             ? "Chuyển sang giao diện sáng"
             : "Chuyển sang giao diện tối";
           buttons.forEach((btn) => {
-            btn.textContent = label;
             btn.setAttribute("aria-label", aria);
           });
         };

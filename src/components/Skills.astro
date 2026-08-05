@@ -9,26 +9,26 @@ import { skills } from "../data/content";
 >
   <h2
     id="skills-heading"
-    class="font-display mb-8 text-[clamp(1.85rem,5vw,2.75rem)] tracking-[-0.02em] md:mb-10"
+    class="font-display mb-8 text-[clamp(2.05rem,5.25vw,3rem)] tracking-[-0.02em] md:mb-10"
   >
     Kỹ năng
   </h2>
   <div class="mt-8 grid gap-8 md:mt-12 md:grid-cols-2 md:gap-10">
     <div class="skill-col">
-      <p class="label mb-3 text-[var(--color-accent)] md:mb-4">Business Analysis</p>
+      <p class="label mb-3 text-[var(--color-accent)] md:mb-4">Phân tích nghiệp vụ</p>
       <ul>
         {skills.ba.map((s) => <li>{s}</li>)}
       </ul>
     </div>
     <div class="grid gap-8">
       <div class="skill-col">
-        <p class="label mb-3 text-[var(--color-accent)] md:mb-4">Domain</p>
+        <p class="label mb-3 text-[var(--color-accent)] md:mb-4">Lĩnh vực</p>
         <ul>
           {skills.domain.map((s) => <li>{s}</li>)}
         </ul>
       </div>
       <div class="skill-col">
-        <p class="label mb-3 text-[var(--color-accent)] md:mb-4">Soft Skills & Language</p>
+        <p class="label mb-3 text-[var(--color-accent)] md:mb-4">Kỹ năng mềm & Ngoại ngữ</p>
         <ul>
           {skills.soft.map((s) => <li>{s}</li>)}
           <li>{skills.language}</li>

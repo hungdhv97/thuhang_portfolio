@@ -43,6 +43,35 @@ html.dark {
 html {
   overflow-x: clip;
   scroll-behavior: smooth;
+  /* Offset sticky header (h-14 / md:h-16) on hash / anchor scroll */
+  scroll-padding-top: 5rem;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 5.5rem;
+  }
+}
+
+/* Same sticky-header offset for every hash target (pairs with scroll-padding-top) */
+#top,
+#about,
+#work,
+#experience,
+#skills,
+#contact {
+  scroll-margin-top: 5rem;
+}
+
+@media (min-width: 768px) {
+  #top,
+  #about,
+  #work,
+  #experience,
+  #skills,
+  #contact {
+    scroll-margin-top: 5.5rem;
+  }
 }
 
 body {
@@ -51,6 +80,8 @@ body {
   background-color: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
   overflow-x: clip;
   background-image:
     radial-gradient(ellipse 90% 55% at 0% -5%, var(--color-accent-soft), transparent 52%),
@@ -94,7 +125,7 @@ html.dark body::before {
 
 .label {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -160,20 +191,39 @@ html.dark body::before {
   }
 }
 
+.work-item {
+  border-left: 2px solid transparent;
+  margin-left: -2px;
+  opacity: 1;
+  background-color: transparent;
+  transition:
+    opacity 0.35s ease,
+    background-color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.work-item:focus-within {
+  opacity: 1;
+  background-color: var(--color-accent-soft);
+  border-left-color: var(--color-accent);
+}
+
 @media (hover: hover) and (pointer: fine) {
-  .work-list:hover .work-item:not(:hover) {
-    opacity: 0.42;
+  .work-list:hover .work-item:not(:hover):not(:focus-within) {
+    opacity: 0.38;
+  }
+
+  .work-item:hover {
+    opacity: 1;
+    background-color: var(--color-accent-soft);
+    border-left-color: var(--color-accent);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .work-list:hover .work-item:not(:hover) {
-    opacity: 1;
+  .work-item {
+    transition: none;
   }
-}
-
-.work-item {
-  transition: opacity 0.4s ease;
 }
 
 .cta-text {
@@ -236,11 +286,17 @@ html.dark body::before {
 .nav-a {
   color: var(--color-ink-soft);
   text-decoration: none;
-  transition: color 0.25s ease;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0.2rem;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
-.nav-a:hover {
+.nav-a:hover,
+.nav-a:focus-visible {
   color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
 }
 
 /* Abstract work marks — typography companions, not image boxes */
@@ -376,7 +432,7 @@ html.dark body::before {
   padding: 0.35rem 0;
   border-bottom: 1px solid var(--color-rule);
   list-style: none;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   line-height: 1.4;
 }
 
@@ -506,7 +562,8 @@ html.menu-open .menu-bar-2 {
   transition:
     opacity 0.4s cubic-bezier(0.32, 0.72, 0, 1),
     transform 0.4s cubic-bezier(0.32, 0.72, 0, 1),
-    color 0.2s ease;
+    color 0.2s ease,
+    border-color 0.2s ease;
   transition-delay: calc(var(--i, 0) * 50ms + 60ms);
 }
 
@@ -518,6 +575,7 @@ html.menu-open .menu-bar-2 {
 .drawer-link:hover,
 .drawer-link:focus-visible {
   color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -550,4 +608,33 @@ html.menu-open .menu-bar-2 {
 .menu-toggle:focus-visible,
 .theme-toggle:focus-visible {
   outline-offset: 4px;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.theme-toggle .theme-icon {
+  display: none;
+  line-height: 0;
+}
+
+.theme-toggle .theme-icon svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  display: block;
+}
+
+/* Light mode: show moon (switch to dark) */
+html:not(.dark) .theme-toggle .theme-icon-moon {
+  display: block;
+}
+
+/* Dark mode: show sun (switch to light) */
+html.dark .theme-toggle .theme-icon-sun {
+  display: block;
 }

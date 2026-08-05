@@ -2,9 +2,11 @@
 import { profile } from "../data/content";
 
 const navLinks = [
-  { href: "#work", label: "Work" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
+  { href: "#about", label: "Về tôi" },
+  { href: "#work", label: "Công việc" },
+  { href: "#experience", label: "Kinh nghiệm" },
+  { href: "#skills", label: "Kỹ năng" },
+  { href: "#contact", label: "Liên hệ" },
 ];
 ---
 
@@ -17,7 +19,7 @@ const navLinks = [
   >
     <a
       href="#top"
-      class="font-display text-lg tracking-tight text-[var(--color-ink)] no-underline"
+      class="font-display text-xl tracking-tight text-[var(--color-ink)] no-underline"
     >
       {profile.shortName}
     </a>
@@ -35,10 +37,40 @@ const navLinks = [
 
       <button
         type="button"
-        class="theme-toggle label cursor-pointer border-0 bg-transparent p-0 text-[var(--color-ink-soft)] transition-colors hover:text-[var(--color-accent)] active:scale-[0.97]"
-        aria-label="Chuyển giao diện"
+        class="theme-toggle cursor-pointer border-0 bg-transparent p-0 text-[var(--color-ink-soft)] transition-colors hover:text-[var(--color-accent)] active:scale-[0.97]"
+        aria-label="Chuyển sang giao diện tối"
       >
-        Night
+        <span class="theme-icon theme-icon-moon" aria-hidden="true">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 14.5A8.5 8.5 0 0 1 9.5 3 7 7 0 1 0 21 14.5z"></path>
+          </svg>
+        </span>
+        <span class="theme-icon theme-icon-sun" aria-hidden="true">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+          </svg>
+        </span>
       </button>
 
       <button
@@ -79,7 +111,7 @@ const navLinks = [
         navLinks.map((link, i) => (
           <a
             href={link.href}
-            class="drawer-link font-display text-[2rem] tracking-[-0.02em] text-[var(--color-ink)] no-underline"
+            class="drawer-link font-display text-[2.2rem] tracking-[-0.02em] text-[var(--color-ink)] no-underline"
             style={`--i: ${i}`}
           >
             {link.label}

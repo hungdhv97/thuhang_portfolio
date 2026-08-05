@@ -9,13 +9,13 @@ import { experience, education } from "../data/content";
 >
   <h2
     id="experience-heading"
-    class="font-display mb-8 text-[clamp(1.85rem,5vw,2.75rem)] tracking-[-0.02em] md:mb-10"
+    class="font-display mb-8 text-[clamp(2.05rem,5.25vw,3rem)] tracking-[-0.02em] md:mb-10"
   >
     Kinh nghiệm
   </h2>
   <div class="grid gap-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-16">
     <div>
-      <p class="text-base leading-relaxed text-[var(--color-ink-soft)] md:text-sm">
+      <p class="text-lg leading-relaxed text-[var(--color-ink-soft)]">
         {education.degree}
         <br />
         {education.school}
@@ -42,7 +42,7 @@ import { experience, education } from "../data/content";
             >
               {job.company}
             </p>
-            <p class="mt-1 text-sm text-[var(--color-ink-soft)]">
+            <p class="mt-1 text-base text-[var(--color-ink-soft)]">
               {job.role}
             </p>
           </li>
