@@ -1,0 +1,56 @@
+name: Deploy to LXC 102
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-thuhang-102
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, pve-deploy]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install and build
+        run: |
+          set -euo pipefail
+          npm ci
+          npm run build
+          test -f dist/index.html
+
+      - name: Deploy static site to CT 102
+        run: |
+          set -euo pipefail
+          tar -czf dist.tar.gz -C dist .
+          SSH_KEY="$HOME/.ssh/id_ed25519_deploy"
+          SCP=(scp -i "$SSH_KEY" -o StrictHostKeyChecking=yes)
+          SSH=(ssh -i "$SSH_KEY" -o StrictHostKeyChecking=yes root@10.23.1.50)
+
+          "${SCP[@]}" dist.tar.gz root@10.23.1.50:/tmp/thuhang-dist.tar.gz
+          "${SSH[@]}" bash -s <<'EOF'
+          set -euo pipefail
+          pct exec 102 -- bash -lc 'rm -rf /var/www/thuhang/*'
+          pct push 102 /tmp/thuhang-dist.tar.gz /tmp/thuhang-dist.tar.gz
+          pct exec 102 -- bash -lc '
+            mkdir -p /var/www/thuhang
+            tar -xzf /tmp/thuhang-dist.tar.gz -C /var/www/thuhang
+            chown -R www-data:www-data /var/www/thuhang
+            find /var/www/thuhang -type d -exec chmod 755 {} \;
+            find /var/www/thuhang -type f -exec chmod 644 {} \;
+            rm -f /tmp/thuhang-dist.tar.gz
+            test -f /var/www/thuhang/index.html
+            ls -la /var/www/thuhang | head
+          '
+          rm -f /tmp/thuhang-dist.tar.gz
+          EOF
