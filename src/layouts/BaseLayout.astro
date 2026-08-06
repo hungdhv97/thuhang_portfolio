@@ -11,6 +11,10 @@ const {
   description =
     "Business Analyst chuyên HRM & ERP. Hơn 7 năm dẫn dắt chuyển đổi số cho tổ chức lớn - am hiểu quy trình thực tế và phần mềm.",
 } = Astro.props;
+
+const site = Astro.site ?? new URL("https://www.thuhang.io.vn");
+const canonicalURL = new URL(Astro.url.pathname, site);
+const ogImageURL = new URL("/favicon.svg", site);
 ---
 
 <!doctype html>
@@ -21,6 +25,21 @@ const {
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <link rel="canonical" href={canonicalURL.href} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:site_name" content="Thái Thị Thu Hằng" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:image" content={ogImageURL.href} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL.href} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
