@@ -1,6 +1,6 @@
 # 003 — Prefer gentler reduced-motion, not zero motion
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: 2a3aa87
 - **Severity**: MEDIUM
 - **Category**: Accessibility

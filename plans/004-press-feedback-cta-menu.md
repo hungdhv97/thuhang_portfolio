@@ -1,6 +1,6 @@
 # 004 — Add subtle press feedback to text CTAs and menu toggle
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: 2a3aa87
 - **Severity**: MEDIUM
 - **Category**: Missed opportunities / Physicality & origin

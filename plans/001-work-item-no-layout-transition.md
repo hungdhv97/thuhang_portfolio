@@ -1,6 +1,6 @@
 # 001 — Stop animating layout on work-item hover
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: 2a3aa87
 - **Severity**: HIGH
 - **Category**: Performance

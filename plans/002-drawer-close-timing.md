@@ -1,6 +1,6 @@
 # 002 — Fix mobile drawer close delay and timeout mismatch
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: 2a3aa87
 - **Severity**: MEDIUM
 - **Category**: Interruptibility / Easing & duration

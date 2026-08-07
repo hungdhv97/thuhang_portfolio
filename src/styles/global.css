@@ -317,16 +317,20 @@ html.dark body::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-portrait::before,
-  .hero-portrait-img,
-  .hero-visual-caption {
-    transition: none !important;
-    transform: none !important;
-    opacity: 1 !important;
+  .hero-portrait::before {
+    transition: none;
+    transform: scaleY(1);
   }
 
   .hero-portrait-img {
+    transition: none;
     transform: none;
+  }
+
+  .hero-visual-caption {
+    transition: opacity 0.2s ease;
+    transform: none;
+    opacity: 1;
   }
 }
 
@@ -785,7 +789,7 @@ html.dark body::before {
 
 @media (prefers-reduced-motion: reduce) {
   .section-atmosphere::before {
-    display: none;
+    transition: opacity 0.2s ease;
   }
 }
 
@@ -901,13 +905,17 @@ html.menu-open .menu-bar-2 {
 
 @media (prefers-reduced-motion: reduce) {
   .menu-bar,
-  .menu-backdrop,
-  .mobile-drawer,
-  .drawer-link {
+  .mobile-drawer {
     transition: none;
   }
 
+  .menu-backdrop {
+    transition: opacity 0.15s ease;
+  }
+
   .drawer-link {
+    transition: none;
+    transition-delay: 0ms !important;
     opacity: 1;
     transform: none;
   }
