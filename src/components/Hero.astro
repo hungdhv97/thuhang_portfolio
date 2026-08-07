@@ -1,26 +1,52 @@
 ---
+import { Image } from "astro:assets";
 import { profile } from "../data/content";
+import portrait from "../assets/portrait.png";
 ---
 
-<section class="reveal mb-24 md:mb-40" aria-labelledby="hero-name">
-  <p class="label mb-6 text-[var(--color-accent)] md:mb-8">{profile.role}</p>
-  <h1
-    id="hero-name"
-    class="font-display max-w-[12ch] text-[clamp(2.75rem,11.5vw,5.85rem)] leading-[1.05] tracking-[-0.03em] text-balance text-[var(--color-ink)] md:leading-[0.98]"
-  >
-    {profile.name}
-  </h1>
-  <p
-    class="mt-8 max-w-[min(28ch,100%)] text-[1.35rem] leading-snug tracking-[-0.01em] text-[var(--color-ink)] md:mt-10 md:text-[1.8rem]"
-  >
-    {profile.headline}
-  </p>
-  <p
-    class="mt-4 max-w-[min(40ch,100%)] text-lg leading-relaxed text-[var(--color-ink-soft)] md:mt-5 md:text-xl"
-  >
-    {profile.support}
-  </p>
-  <div class="mt-8 md:mt-10">
-    <a href="#work" class="cta-solid cta-solid-responsive">Xem dự án</a>
+<section
+  class="hero reveal section-space"
+  aria-labelledby="hero-name"
+>
+  <div class="hero-grid">
+    <div class="hero-copy min-w-0">
+      <p class="label mb-5 text-[var(--color-accent)] md:mb-6">{profile.role}</p>
+      <h1
+        id="hero-name"
+        class="font-display max-w-[14ch] text-[clamp(2.85rem,12vw,5.85rem)] leading-[1.02] tracking-[-0.035em] text-balance text-[var(--color-ink)] md:leading-[0.96]"
+      >
+        {profile.name}
+      </h1>
+      <p
+        class="mt-7 max-w-[min(34ch,100%)] text-[1.2rem] leading-snug tracking-[-0.015em] text-[var(--color-ink)] md:mt-9 md:text-[1.55rem] md:leading-[1.25]"
+      >
+        {profile.headline}
+      </p>
+      <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 md:mt-9">
+        <a href="#work" class="cta-solid cta-solid-responsive">Xem dự án</a>
+        <p class="label text-[var(--color-ink-soft)]">
+          {profile.location}
+          <span class="mx-2 text-[var(--color-rule)]" aria-hidden="true">·</span>
+          {profile.years}
+        </p>
+      </div>
+    </div>
+
+    <figure class="hero-visual">
+      <div class="hero-portrait">
+        <Image
+          src={portrait}
+          alt={`Chân dung chuyên nghiệp của ${profile.name}`}
+          widths={[320, 480, 640, 900]}
+          sizes="(min-width: 900px) 20rem, min(72vw, 16rem)"
+          class="hero-portrait-img"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <figcaption class="hero-visual-caption label">
+        {profile.shortName} · {profile.location}
+      </figcaption>
+    </figure>
   </div>
 </section>

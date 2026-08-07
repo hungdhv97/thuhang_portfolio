@@ -3,9 +3,8 @@ export const profile = {
   shortName: "Thu Hằng",
   role: "Business Analyst · HRM / ERP",
   location: "Hà Nội",
-  headline: "Làm rõ yêu cầu rối — đưa hệ thống vào vận hành.",
-  support:
-    "Am hiểu quy trình thực tế lẫn quy trình phần mềm để tạo giải pháp tối ưu, thực tiễn và dễ sử dụng.",
+  years: "7+ năm",
+  headline: "Làm rõ yêu cầu rối - đưa hệ thống vào vận hành.",
 };
 
 export const about = {
@@ -19,8 +18,12 @@ export type WorkItem = {
   name: string;
   company: string;
   role: string;
-  impact: string;
-  detail?: string;
+  /** Bối cảnh / pain point trước khi làm */
+  problem: string;
+  /** Việc BA đã làm */
+  action: string;
+  /** Kết quả đo được / outcome */
+  result: string;
   tags: string[];
   note?: string;
 };
@@ -31,22 +34,26 @@ export const work: WorkItem[] = [
     name: "G-Hero / G-Stars",
     company: "Golden Gate",
     role: "Business Analyst",
-    impact:
-      "ERP nhà hàng cho 1.000 quản lý theo dõi kinh doanh toàn tập đoàn (700+ nhà hàng); đào tạo 1.000 quản lý và 16.000 nhân viên.",
-    detail:
-      "Prototype Figma, SRS, HDSD, video đào tạo; Forecasting, Work Schedule, Job Market, Role Management, Racing S.",
+    problem:
+      "700+ nhà hàng cần theo dõi kinh doanh tập đoàn; đào tạo và vận hành ERP quy mô lớn.",
+    action:
+      "Prototype Figma, SRS, HDSD, video đào tạo - Forecasting, Work Schedule, Job Market, Role Management, Racing S.",
+    result:
+      "ERP cho 1.000 quản lý; đào tạo 1.000 quản lý và 16.000 nhân viên.",
     tags: ["ERP", "FnB", "Figma", "SRS", "Đào tạo"],
-    note: "Khen thưởng golive — 09/2023",
+    note: "Khen thưởng golive - 09/2023",
   },
   {
     id: "ihrp",
     name: "iHRP",
     company: "Golden Gate",
     role: "Business Analyst",
-    impact:
-      "Hệ thống quản trị nhân sự cho 16.000 end-users: hồ sơ nhân viên, chấm công nhà hàng & văn phòng, tiền lương.",
-    detail:
-      "Tối ưu quy trình phê duyệt tài liệu qua phân tích nghiệp vụ sâu và testcase chuyên sâu.",
+    problem:
+      "Quản trị nhân sự phân mảnh cho hàng chục nghìn nhân sự nhà hàng và văn phòng.",
+    action:
+      "Phân tích nghiệp vụ sâu, tối ưu quy trình phê duyệt tài liệu, testcase chuyên sâu.",
+    result:
+      "HRM cho 16.000 end-users: hồ sơ, chấm công nhà hàng & văn phòng, tiền lương.",
     tags: ["HRM", "Chấm công", "Lương", "Testcase"],
   },
   {
@@ -54,10 +61,12 @@ export const work: WorkItem[] = [
     name: "G-RMS",
     company: "Golden Gate",
     role: "Business Analyst",
-    impact:
-      "Phân quyền role, dữ liệu và đăng nhập SSO cho toàn bộ app/hệ thống đang dùng trong Golden Gate.",
-    detail:
+    problem:
+      "Nhiều app/hệ thống với phân quyền và đăng nhập tách rời, khó kiểm soát.",
+    action:
       "Toàn bộ vòng đời BA: khảo sát yêu cầu, prototype Figma, SRS, test hệ thống.",
+    result:
+      "Phân quyền role, dữ liệu và SSO thống nhất cho toàn bộ app đang dùng tại Golden Gate.",
     tags: ["SSO", "Phân quyền", "Figma", "SRS"],
   },
   {
@@ -65,22 +74,26 @@ export const work: WorkItem[] = [
     name: "G-Survey",
     company: "Golden Gate",
     role: "Business Analyst",
-    impact:
-      "Hệ thống khảo sát với ngân hàng câu hỏi, quản lý bài khảo sát, phân quyền, báo cáo và đánh giá 360.",
-    detail: "Từ khảo sát yêu cầu, prototype Figma tới SRS và test.",
+    problem:
+      "Cần khảo sát nội bộ có ngân hàng câu hỏi, phân quyền, báo cáo và đánh giá 360.",
+    action: "Từ khảo sát yêu cầu, prototype Figma tới SRS và test.",
+    result:
+      "Hệ thống khảo sát vận hành với quản lý bài thi, báo cáo và đánh giá 360°.",
     tags: ["Survey", "360°", "Figma", "SRS"],
   },
   {
     id: "bidv",
-    name: "PeopleSoft HCM — BIDV",
+    name: "PeopleSoft HCM - BIDV",
     company: "FPT Information System",
     role: "Business Analyst · Teamlead",
-    impact:
-      "Teamlead trên 5 nhân sự; dẫn dắt Core HR, Thi đua–Khen thưởng và Đào tạo cho giải pháp quản trị nhân sự tổng thể BIDV.",
-    detail:
-      "SRS, mô hình hóa quy trình, testcase, HDSD; đứng lớp đào tạo quy mô 500 người tại Hà Nội và TP.HCM.",
+    problem:
+      "Triển khai HCM tổng thể cho ngân hàng lớn, nhiều phân hệ và đội BA cần dẫn dắt.",
+    action:
+      "Teamlead 5+ nhân sự; SRS, mô hình hóa quy trình, testcase, HDSD; đứng lớp đào tạo 500 người tại Hà Nội và TP.HCM.",
+    result:
+      "Dẫn dắt Core HR, Thi đua-Khen thưởng và Đào tạo; golive được khen thưởng - 2020.",
     tags: ["PeopleSoft", "HRM", "Teamlead", "SRS"],
-    note: "Khen thưởng golive phân hệ Đào tạo & Thi đua–Khen thưởng — 2020",
+    note: "Khen thưởng golive phân hệ Đào tạo & Thi đua-Khen thưởng - 2020",
   },
 ];
 
@@ -95,17 +108,17 @@ export const experience: ExperienceItem[] = [
   {
     company: "Golden Gate",
     role: "Business Analyst",
-    period: "04/2021 – 08/2024",
+    period: "04/2021 - 08/2024",
   },
   {
     company: "FPT Information System",
     role: "Business Analyst · Teamlead",
-    period: "11/2017 – 04/2021",
+    period: "11/2017 - 04/2021",
   },
   {
     company: "Techcombank",
     role: "L&D / HRBP / Talent Acquisition",
-    period: "2016 – 2017",
+    period: "2016 - 2017",
     compact: true,
   },
 ];
@@ -146,12 +159,12 @@ export const contact = {
 
 export const education = {
   school: "Đại học Kinh tế Quốc dân",
-  degree: "Cử nhân — Quản trị Nguồn nhân lực",
-  period: "08/2012 – 08/2016",
+  degree: "Cử nhân - Quản trị Nguồn nhân lực",
+  period: "08/2012 - 08/2016",
   gpa: "GPA 3.43/4.0",
 };
 
-/** Abstract mark keys for CSS compositions — no fake screenshots */
+/** Abstract CSS marks for work cases */
 export const workMarks: Record<string, "orbit" | "stack" | "grid" | "pulse" | "flow"> = {
   "g-hero": "orbit",
   ihrp: "stack",

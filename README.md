@@ -6,7 +6,7 @@ Business Analyst (HRM / ERP) portfolio. **Astro + Tailwind**, editorial Letter d
 
 Solo BA portfolio for recruiter/hiring managers — premium editorial, stone paper + forest accent, Fraunces + Source Sans 3.
 
-Dials: `DESIGN_VARIANCE 7` · `MOTION_INTENSITY 4` · `VISUAL_DENSITY 4`
+Dials: `DESIGN_VARIANCE 7` · `MOTION_INTENSITY 5` · `VISUAL_DENSITY 4`
 
 See [`design.md`](design.md).
 
