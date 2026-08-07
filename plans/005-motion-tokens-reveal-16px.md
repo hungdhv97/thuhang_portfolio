@@ -1,6 +1,6 @@
 # 005 — Tokenize motion curves and align reveal rise to 16px
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: 2a3aa87
 - **Severity**: LOW
 - **Category**: Cohesion & tokens
