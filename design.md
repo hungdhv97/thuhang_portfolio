@@ -1,18 +1,21 @@
-# Design system — Thu Hằng portfolio (Astro)
+# Design system - Thu Hằng portfolio (Astro)
 
 ## Design Read
 
 Solo BA portfolio for recruiter/hiring managers (HR-tech, ERP, banking, FnB), with premium editorial / calm-authority language, leaning toward letter composition + hairline typography (Fraunces + Source Sans 3 + forest accent).
 
+Mode: redesign-preserve. Vibe: Editorial Luxury on cool stone + forest (not warm cream/brass). Layout: Editorial Split hero.
+
 ## Dials
 
 - `DESIGN_VARIANCE: 7`
-- `MOTION_INTENSITY: 4`
+- `MOTION_INTENSITY: 5`
 - `VISUAL_DENSITY: 4`
 
 ## Stack
 
 - Astro + TypeScript + Tailwind CSS v4
+- Self-hosted fonts via `@fontsource-variable` / `@fontsource`
 - Minimal JS: theme toggle + IntersectionObserver reveal
 - No Next.js
 
@@ -35,19 +38,20 @@ Solo BA portfolio for recruiter/hiring managers (HR-tech, ERP, banking, FnB), wi
 
 ## Typography
 
-- Display: Fraunces (roman headings only)
-- Body: Source Sans 3
+- Display: Fraunces Variable (roman headings only)
+- Body: Source Sans 3 Variable
 - Labels: JetBrains Mono, uppercase, tracked
 
 ## Layout rules
 
 - No card grids in hero
-- No empty gray image placeholders — abstract CSS marks only
+- No empty gray image placeholders - abstract CSS marks only
 - Distinct section rhythms (pull-quote About, numbered Work, timeline Experience, columnar Skills)
 - Real CV metrics only
+- Sticky header stays editorial hairline bar (not floating dock)
 
 ## Motion
 
-- Reveal: fade + 12px rise when `prefers-reduced-motion: no-preference`
-- Work-row hover dim
-- Theme toggle without flash (inline head script)
+- Reveal: fade + 16px rise (`cubic-bezier(0.22, 1, 0.36, 1)`) when `prefers-reduced-motion: no-preference`
+- Work-row hover dim; portrait / mark haptic hover (transform/opacity only)
+- CTA active `scale(0.98)`; theme toggle without flash (inline head script)

@@ -2,23 +2,20 @@
 import { work, workMarks } from "../data/content";
 ---
 
-<section id="work" class="reveal mb-24 md:mb-40" aria-labelledby="work-heading">
-  <h2
-    id="work-heading"
-    class="font-display text-[clamp(2.05rem,5.25vw,3rem)] tracking-[-0.02em]"
-  >
-    Công việc
-  </h2>
-  <p
-    class="mt-4 max-w-[min(22ch,100%)] font-display text-[clamp(1.55rem,4.5vw,2.35rem)] leading-[1.15] tracking-[-0.02em] md:mt-5"
-  >
-    Dự án tiêu biểu
-  </p>
-  <p class="mt-4 max-w-[min(36ch,100%)] text-lg text-[var(--color-ink-soft)] md:mt-5">
-    Từ yêu cầu rối đến hệ thống chạy: prototype, SRS, đào tạo, golive.
-  </p>
+<section id="work" class="reveal section-space" aria-labelledby="work-heading">
+  <header class="work-header">
+    <h2
+      id="work-heading"
+      class="font-display text-[clamp(2.05rem,5.25vw,3rem)] tracking-[-0.02em]"
+    >
+      Công việc
+    </h2>
+    <p class="mt-3 max-w-[min(40ch,100%)] text-base text-[var(--color-ink-soft)] md:mt-4 md:text-lg">
+      Mỗi case: vấn đề → việc làm → kết quả.
+    </p>
+  </header>
 
-  <ul class="work-list mt-10 list-none space-y-0 p-0 md:mt-14">
+  <ul class="work-list mt-8 list-none space-y-0 p-0 md:mt-12">
     {
       work.map((item, index) => {
         const mark = workMarks[item.id] ?? "flow";
@@ -26,48 +23,54 @@ import { work, workMarks } from "../data/content";
         return (
           <li
             class:list={[
-              "work-item border-t border-[var(--color-rule)] py-8 last:border-b md:py-10",
-              offset && "md:pl-10",
+              "work-item",
+              offset && "work-item-offset",
             ]}
           >
-            <div class="grid gap-3 md:grid-cols-[5.5rem_minmax(0,1fr)] md:gap-10">
-              <span class="font-display text-[2.1rem] leading-none tracking-[-0.04em] text-[var(--color-accent)] md:pt-1 md:text-[2.5rem]">
+            <article class="work-case">
+              <div class="work-case-index font-display" aria-hidden="true">
                 {String(index + 1).padStart(2, "0")}
-              </span>
-              <div class="min-w-0">
-                <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <h3 class="font-display text-[1.55rem] tracking-[-0.02em] md:text-[2.05rem]">
-                    {item.name}
-                  </h3>
-                  <span class="text-base text-[var(--color-ink-soft)]">
-                    {item.company}
-                  </span>
-                </div>
-                <p class="mt-1 text-base text-[var(--color-accent)]">
-                  {item.role}
-                </p>
-                <p class="mt-4 max-w-[48ch] text-lg leading-relaxed text-[var(--color-ink)] md:mt-5">
-                  {item.impact}
-                </p>
-                {item.detail ? (
-                  <p class="mt-2 max-w-[48ch] text-base leading-relaxed text-[var(--color-ink-soft)]">
-                    {item.detail}
-                  </p>
-                ) : null}
-                {item.note ? (
-                  <p class="mt-3 text-base text-[var(--color-ink-soft)]">
-                    {item.note}
-                  </p>
-                ) : null}
-                <p class="label mt-4 text-[var(--color-ink-soft)] md:mt-5">
-                  {item.tags.join(" · ")}
-                </p>
-                <div
-                  class:list={["mark", `mark-${mark}`]}
-                  aria-hidden="true"
-                />
               </div>
-            </div>
+
+              <div class="work-case-body min-w-0">
+                <div class="work-case-title-row">
+                  <h3 class="font-display work-case-title">{item.name}</h3>
+                  <p class="work-case-meta">
+                    <span>{item.company}</span>
+                    <span class="work-case-meta-sep" aria-hidden="true">
+                      ·
+                    </span>
+                    <span>{item.role}</span>
+                  </p>
+                </div>
+
+                <dl class="work-case-steps">
+                  <div class="work-step">
+                    <dt class="label">Vấn đề</dt>
+                    <dd>{item.problem}</dd>
+                  </div>
+                  <div class="work-step">
+                    <dt class="label">Việc làm</dt>
+                    <dd>{item.action}</dd>
+                  </div>
+                  <div class="work-step work-step-result">
+                    <dt class="label">Kết quả</dt>
+                    <dd>{item.result}</dd>
+                  </div>
+                </dl>
+
+                {item.note ? (
+                  <p class="work-case-note">{item.note}</p>
+                ) : null}
+
+                <p class="label work-case-tags">{item.tags.join(" · ")}</p>
+              </div>
+
+              <div
+                class:list={["mark", "work-case-mark", `mark-${mark}`]}
+                aria-hidden="true"
+              />
+            </article>
           </li>
         );
       })
