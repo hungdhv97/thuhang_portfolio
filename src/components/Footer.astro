@@ -1,5 +1,7 @@
 ---
-import { profile } from "../data/content";
+import { profile, contact } from "../data/content";
+
+const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer w-full border-t border-[var(--color-rule)]">
@@ -9,6 +11,22 @@ import { profile } from "../data/content";
     >
       <p class="font-display text-xl tracking-tight md:text-2xl">{profile.name}</p>
       <p class="label text-[var(--color-ink-soft)]">{profile.role}</p>
+    </div>
+
+    <div
+      class="mt-8 flex flex-col gap-3 border-t border-[var(--color-rule)] pt-6 sm:flex-row sm:items-center sm:justify-between sm:gap-4 md:mt-10"
+    >
+      <p class="label m-0 text-[var(--color-ink-soft)]">
+        © {year} {profile.shortName}
+        <span class="mx-2 text-[var(--color-rule)]" aria-hidden="true">·</span>
+        {profile.location}
+      </p>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+        <a href={`mailto:${contact.email}`} class="cta-text cta-text-break label">
+          {contact.email}
+        </a>
+        <a href="#top" class="to-top label">Lên đầu trang</a>
+      </div>
     </div>
   </div>
 </footer>

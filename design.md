@@ -55,3 +55,25 @@ Mode: redesign-preserve. Vibe: Editorial Luxury on cool stone + forest (not warm
 - Reveal: fade + 16px rise (`cubic-bezier(0.22, 1, 0.36, 1)`) when `prefers-reduced-motion: no-preference`
 - Work-row hover dim; portrait / mark haptic hover (transform/opacity only)
 - CTA active `scale(0.98)`; theme toggle without flash (inline head script)
+- `scroll-behavior: smooth` only under `prefers-reduced-motion: no-preference`
+
+## Navigation & states
+
+- Header + drawer links mark the current section with `aria-current="location"`
+  (scroll listener, rAF-throttled, threshold at 34% viewport height)
+- Active nav = ink text + accent underline; hover stays accent-on-accent
+- Anchors are bare hashes on `/` and prefixed `/#…` elsewhere so the 404 never dead-ends
+- Skip link (`.skip-link`) parks off-canvas and slides in on focus; `<main>` takes
+  `tabindex="-1"` and suppresses its own focus ring
+
+## Pages
+
+- `/` — the letter
+- `/404` — same header/footer chrome, editorial 404 with a `mark-flow` rule, `noindex`
+- `/sitemap.xml` — generated from `Astro.site`; `public/robots.txt` points at it
+
+## Metadata
+
+- Canonical + Open Graph + Twitter card per page
+- `theme-color` split by `prefers-color-scheme` (`#f6f4ee` / `#140e0a`, the paper tokens)
+- JSON-LD `Person` built from `src/data/content.ts` so schema can't drift from the CV

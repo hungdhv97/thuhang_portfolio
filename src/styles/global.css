@@ -18,6 +18,7 @@
 }
 
 html.dark {
+  color-scheme: dark;
   --color-paper: oklch(17% 0.014 55);
   --color-paper-2: oklch(21% 0.016 55);
   --color-ink: oklch(94% 0.008 92);
@@ -41,9 +42,15 @@ html.dark {
 
 html {
   overflow-x: clip;
-  scroll-behavior: smooth;
+  color-scheme: light;
   /* Offset sticky header (h-14 / md:h-16) on hash / anchor scroll */
   scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 @media (min-width: 768px) {
@@ -128,6 +135,20 @@ html.dark body::before {
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p,
+dd,
+li,
+figcaption {
+  text-wrap: pretty;
 }
 
 .letter {
@@ -405,6 +426,7 @@ html.dark body::before {
   font-size: 1.85rem;
   line-height: 1;
   letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
   color: var(--color-accent);
 }
 
@@ -604,6 +626,41 @@ html.dark body::before {
   border-bottom-color: var(--color-accent);
 }
 
+.nav-a[aria-current="location"] {
+  color: var(--color-ink);
+  border-bottom-color: var(--color-accent);
+}
+
+.drawer-link[aria-current="location"] {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 60;
+  padding: 0.7rem 1.1rem;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  text-decoration: none;
+  box-shadow: 0 12px 30px -18px color-mix(in oklch, var(--color-ink) 60%, transparent);
+  transform: translateY(calc(-100% - 1rem));
+  transition: transform 0.28s var(--ease-out-soft);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition: none;
+  }
+}
+
 .mark {
   position: relative;
   width: 100%;
@@ -738,6 +795,61 @@ html.dark body::before {
 .pull {
   border-left: 2px solid var(--color-accent);
   padding-left: 1.25rem;
+}
+
+.error-mark {
+  max-width: 12rem;
+  margin-top: 3.25rem;
+}
+
+@media (min-width: 768px) {
+  .error-mark {
+    margin-top: 4rem;
+  }
+}
+
+.to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--color-ink-soft);
+  text-decoration: none;
+  transition:
+    color 0.3s var(--ease-out-soft),
+    transform 160ms var(--ease-out-expo);
+}
+
+.to-top::after {
+  content: "↑";
+  transition: transform 0.35s var(--ease-out-expo);
+}
+
+.to-top:hover,
+.to-top:focus-visible {
+  color: var(--color-accent);
+}
+
+.to-top:hover::after {
+  transform: translateY(-3px);
+}
+
+.to-top:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .to-top,
+  .to-top::after {
+    transition: color 0.2s ease;
+  }
+
+  .to-top:active {
+    transform: none;
+  }
+
+  .to-top:hover::after {
+    transform: none;
+  }
 }
 
 .skill-col {
@@ -925,6 +1037,12 @@ html.menu-open .menu-bar-2 {
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
+}
+
+/* Skip-link target: move focus without ringing the whole page */
+main:focus,
+main:focus-visible {
+  outline: none;
 }
 
 .menu-toggle {
