@@ -4,21 +4,46 @@ import "@fontsource-variable/source-sans-3/wght.css";
 import "@fontsource/jetbrains-mono/400.css";
 import "@fontsource/jetbrains-mono/500.css";
 import "../styles/global.css";
+import { profile, contact, education, skills } from "../data/content";
 
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
 
 const {
   title = "Thái Thị Thu Hằng - Business Analyst",
   description =
     "Business Analyst chuyên HRM & ERP. Hơn 7 năm dẫn dắt chuyển đổi số cho tổ chức lớn - am hiểu quy trình thực tế và phần mềm.",
+  noindex = false,
 } = Astro.props;
 
 const site = Astro.site ?? new URL("https://www.thuhang.io.vn");
 const canonicalURL = new URL(Astro.url.pathname, site);
 const ogImageURL = new URL("/og-portrait.png", site);
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: "Business Analyst",
+  description,
+  url: site.href,
+  image: ogImageURL.href,
+  email: `mailto:${contact.email}`,
+  telephone: `+84${contact.phone.replace(/\D/g, "").replace(/^0/, "")}`,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: profile.location,
+    addressCountry: "VN",
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: education.school,
+  },
+  knowsAbout: [...skills.domain, ...skills.ba],
+};
 ---
 
 <!doctype html>
@@ -30,6 +55,18 @@ const ogImageURL = new URL("/og-portrait.png", site);
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <link rel="canonical" href={canonicalURL.href} />
+    {noindex ? <meta name="robots" content="noindex, follow" /> : null}
+
+    <meta
+      name="theme-color"
+      content="#f6f4ee"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#140e0a"
+      media="(prefers-color-scheme: dark)"
+    />
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="vi_VN" />
@@ -47,6 +84,12 @@ const ogImageURL = new URL("/og-portrait.png", site);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL.href} />
     <meta name="twitter:image:alt" content="Chân dung Thái Thị Thu Hằng" />
+
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(personSchema)}
+    />
     <script is:inline>
       (function () {
         try {
@@ -61,6 +104,7 @@ const ogImageURL = new URL("/og-portrait.png", site);
     </script>
   </head>
   <body class="relative z-0 antialiased">
+    <a class="skip-link label" href="#top">Tới nội dung chính</a>
     <slot />
     <script>
       function initReveal() {

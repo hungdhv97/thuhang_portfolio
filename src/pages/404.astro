@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const elsewhere = [
+  { href: "/#work", label: "Công việc" },
+  { href: "/#experience", label: "Kinh nghiệm" },
+  { href: "/#contact", label: "Liên hệ" },
+];
+---
+
+<BaseLayout
+  title="Không tìm thấy trang - Thái Thị Thu Hằng"
+  description="Đường dẫn không tồn tại. Quay lại trang chính để xem hồ sơ Business Analyst của Thái Thị Thu Hằng."
+  noindex
+>
+  <div class="flex min-h-dvh w-full flex-col">
+    <Header />
+    <main
+      id="top"
+      tabindex="-1"
+      class="letter flex w-full flex-1 items-center py-20 md:py-28"
+    >
+      <section class="error-page reveal" aria-labelledby="error-heading">
+        <p class="label mb-5 text-[var(--color-accent)] md:mb-6">Lỗi 404</p>
+        <h1
+          id="error-heading"
+          class="font-display max-w-[16ch] text-[clamp(2.4rem,9vw,4.5rem)] leading-[1.04] tracking-[-0.03em] md:leading-[0.98]"
+        >
+          Trang này không tồn tại.
+        </h1>
+        <p
+          class="mt-6 max-w-[min(44ch,100%)] text-lg leading-[1.6] text-[var(--color-ink-soft)] md:mt-8 md:text-xl"
+        >
+          Đường dẫn bạn vừa mở đã thay đổi hoặc chưa từng có. Quay lại trang
+          chính để xem hồ sơ và các dự án.
+        </p>
+
+        <div class="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4 md:mt-11">
+          <a href="/" class="cta-solid cta-solid-responsive">Về trang chủ</a>
+          <nav class="flex flex-wrap gap-x-6 gap-y-3" aria-label="Lối tắt">
+            {
+              elsewhere.map((link) => (
+                <a href={link.href} class="cta-text label">
+                  {link.label}
+                </a>
+              ))
+            }
+          </nav>
+        </div>
+
+        <div class="mark mark-flow error-mark" aria-hidden="true"></div>
+      </section>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
